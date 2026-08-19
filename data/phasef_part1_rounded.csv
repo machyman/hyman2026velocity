@@ -1,0 +1,5 @@
+scheme,n_reps,bias_v4,variance_v4,mse_v4
+"MC (random, iid)",100,3.03e-03,1.2e-02,1.18e-02
+"RQMC (random, stratified)",100,-3.86e-03,1.0e-02,1.02e-02
+"A-iid (sorted, iid)",100,1.50e+03,1.2e+05,2.36e+06
+"Array-RQMC (sorted, aligned)",100,2.01e+03,1.2e-02,4.06e+06

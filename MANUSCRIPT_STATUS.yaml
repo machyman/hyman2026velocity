@@ -1,0 +1,222 @@
+# MANUSCRIPT_STATUS.yaml — schema 1.2 — canonical source of truth.
+# README.md is RENDERED from this file and must never be hand-edited.
+manuscript:
+  short_id: hyman2026velocity   # canonical from v1_32_0. RETIRED: hyman2026obstruction
+  title: Velocity sorting biases the equilibrium in Array-RQMC for binary-collision models
+  subtitle: null
+  authors:
+    - name: James M. Hyman
+      affiliation: Tulane University
+      email: mhyman@tulane.edu
+      orcid: 0000-0001-5247-5794
+      is_corresponding: true
+  main_file: hyman2026velocity_v1_32_0.tex
+  si_file: null
+  current_version: v1_32_0
+  current_si_version: null
+  current_pages: 20
+  current_si_pages: null
+  last_compiled: 2026-08-16
+  compile_state:
+    errors: 0
+    undef_refs: 0
+    undef_cites: 0
+    overfull_hboxes: 0
+  mrep_score: 90   # GSR v3 Pass 1: STS 88 + E4 1 + E5 1; E1-E3 NOT COMPUTABLE (ARC/ARP absent); reportable ceiling 92
+  bibliography:
+    bib_file: hyman2026velocity.bib
+    bib_sha256: 0fbced76720b4589
+    entries: 14
+    style: plain
+target_venue:
+  journal: SIAM Journal on Numerical Analysis
+  publisher: SIAM
+  submission_system: null
+  url: null
+  blinding: single-blind
+  authors_anonymized: false
+  page_limit: null
+distribution:
+  arxiv: {posted: false, id: null}
+  github: {repo: null, posted: false}
+  zenodo: {doi: null}
+submission:
+  state: not_submitted
+  submitted_date: null
+referee_history: []
+companion_papers:
+  - short_id: ho2026randomized
+    note: "Ho and Owen (2026), RQMC for walk on spheres; cited, not co-authored"
+assets:
+  summary:
+    figures_total: 3
+    tables_total: 5
+    deposited: 8
+    awaited: 0
+    external: 0
+    unhashed: 0
+    last_integrity_check: 2026-08-16
+    integrity_status: pass
+  protected_extra:
+    - verify_rounded.py
+    - cleanroom_check.py
+    - kac_fig2_finiteN_v1_0_0.py
+    - kac_onestep_test_v1_0_0.py
+    - kac_onestep_curve_v1_0_0.py
+    - scope_scan.py
+    - verify_manuscript.py
+    - spectrum_N6.csv
+    - render_readme_v1_0_0.py
+    - integrity_check.py
+    - hyman2026obstruction.bib
+    - phasef_tables.tex
+    - kac_manuscript_data_v1_0_0.py
+    - kac_phasef_v2_1_0.py
+    - kac_remaining_v1_0_0.py
+    - kac_theory_v1_1_0.py
+    - kac_theory_v1_2_0.py
+    - kac_scope_v1_0_0.py
+    - generator_template_v1_0_0.py
+    - artifact_sweep_v1_0_0.py
+    - manuscript_ks_sweep.csv
+    - remaining_results.csv
+    - phasef_part1.csv
+    - phasef_part2.csv
+    - phasef_part1_rounded.csv
+    - phasef_part2_rounded.csv
+  items:
+    - id: fig1
+      kind: figure
+      label: fig:spectrum
+      status: deposited
+      generator: {path: kac_fig1_spectrum_v1_0_0.py, language: python, sha256: 881933b19fbe0ac3, entrypoint: "SOURCE_DATE_EPOCH=1786822750 python3 kac_fig1_spectrum_v1_0_0.py"}
+      inputs: []
+      params: {seed: 813960000, notes: "N=6; one state drawn from sigma; all 15 perfect matchings enumerated. No randomness beyond the seeded state; output deterministic. SOURCE_DATE_EPOCH pins the PDF CreationDate."}
+      software: ["python 3.12", "numpy 2.4.4", "matplotlib 3.10.8"]
+      outputs:
+        - {path: spectrum_N6.csv, sha256: 9ab81745b6ac44da}
+        - {path: fig01_spectrum.pdf, sha256: 68444d7f4a30e49d}
+      owner: self
+      provenance_note: "Mechanism figure added in Session 23 to close FTQ-2. The generator asserts at run time that Cbar equals the mean of the 15 matching values, which is Lemma 4.4 checked against the figure's own data. Adding this figure made the rendered figure numbers agree with the file names and the registry ids for the first time (fig1/fig2/fig3 = Figures 1/2/3), closing S-2."
+      last_verified: 2026-08-16
+    - id: fig2
+      kind: figure
+      label: fig:finiteN
+      status: deposited
+      generator: {path: kac_manuscript_data_v1_0_0.py, language: python, sha256: 5c62c17f71909852, entrypoint: "python3 kac_manuscript_data_v1_0_0.py"}
+      # AUDIT 2026-08-16: the generator above writes the sweep CSV only. The
+      # figure is drawn by the plotting generator below, reconstructed after a
+      # clean-room harness showed fig02_finite_N.pdf had no producer.
+      plot_generator: {path: kac_fig2_finiteN_v1_0_0.py, language: python, sha256: 8b2e65a2a8fea86e, entrypoint: "SOURCE_DATE_EPOCH=1786822750 python3 kac_fig2_finiteN_v1_0_0.py"}
+      plot_inputs:
+        # AUDIT: the plot generator consumes the CSV the data generator writes.
+        - {path: manuscript_ks_sweep.csv, sha256: 09f79fb7e70526f6}
+      inputs: []
+      params: {seed: 813950000, notes: "400 chains, 3000 burn-in, 60 collections at gap 25"}
+      software: ["python 3.12", "numpy 2.4.4", "scipy 1.17.1", "matplotlib 3.10.8"]
+      outputs:
+        # AUDIT 2026-08-16: the generator writes the CSV only. fig02_finite_N.pdf
+        # has NO plotting generator - the same gap that was closed for fig3.
+        - {path: manuscript_ks_sweep.csv, sha256: 09f79fb7e70526f6}
+        - {path: fig02_finite_N.pdf, sha256: 10b97a8ad0e3a447}
+      owner: self
+      provenance_note: "Regenerated 2026-08-14; reproduces the prior sweep to 0.11% at every N>=4. AUDIT 2026-08-16: kac_manuscript_data_v1_0_0.py writes the CSV ONLY; the plotting script was never deposited. kac_fig2_finiteN_v1_0_0.py is a Session-23 reconstruction from the registered CSV. It reproduces the data, the three series and the axes and is deterministic run to run, but it is NOT a pixel reproduction: legend and annotation placement differ from the registered PDF by about 13 percent of pixels, concentrated in those two regions and not in the curves. The registered fig02_finite_N.pdf is unchanged and remains the figure in the build. Same status as fig3."
+      last_verified: 2026-08-16
+    - id: fig3
+      kind: figure
+      label: fig:tradeoff
+      status: deposited
+      generator: {path: kac_fig3_tradeoff_v1_0_0.py, language: python, sha256: 9e0ff9df59cbc1ee, entrypoint: "SOURCE_DATE_EPOCH=1786822750 python3 kac_fig3_tradeoff_v1_0_0.py"}
+      inputs:
+        - {path: phasef_part2_rounded.csv, sha256: 9fdbec9d04a2d291}
+      params: {seed: null, notes: "two-panel: MSE vs block width; C/Cbar vs measured bias. No randomness in the plotting step; output is deterministic given the input CSV. SOURCE_DATE_EPOCH pins the PDF CreationDate, which matplotlib would otherwise stamp with the run time."}
+      software: ["python 3.12", "matplotlib 3.10.8", "numpy 2.4.4"]
+      outputs:
+        - {path: fig03_tradeoff.pdf, sha256: 641ea3d6fb9877d4}
+      owner: self
+      provenance_note: "Gap closed 2026-08-16 (Session 23). The original inline plotting script was never saved; kac_fig3_tradeoff_v1_0_0.py is a reconstruction from the registered input. It reproduces the figure structurally — same figsize (9.2x3.5 in), fonts, colours, series, scales and data — with the axes rectangle landing within 2 px of the registered rendering at 150 dpi. It is NOT byte-identical: a fresh run yields sha16 53376328be2738a5 against the registered 641ea3d6fb9877d4, a residual sub-pixel layout difference, not a difference in plotted values. The registered fig03_tradeoff.pdf is unchanged and remains the figure in the manuscript build; the recorded output hash therefore still refers to it. Re-running the generator is expected to produce a byte-different but visually equivalent PDF, and that is not an integrity failure."
+      last_verified: 2026-08-16
+    - id: tab1
+      kind: table
+      label: tab:fix
+      status: deposited
+      generator: {path: kac_phasef_v2_1_0.py, language: python, sha256: d311258383bbfbdf, entrypoint: "python3 kac_phasef_v2_1_0.py"}
+      inputs: []
+      params: {seed: 813900000, notes: "N=2048, 800 steps, 100 randomizations, fixed initial ensemble"}
+      software: ["python 3.12", "numpy 2.4.4"]
+      outputs:
+        - {path: phasef_part1.csv, sha256: da575d6c1a5707ce}
+        # AUTHORED, not generated. Verified 2026-08-16: these are not roundings.
+        # They select columns, fix digits and add an n_reps column the source
+        # lacks; the derivation rule was never recorded, so a generator would
+        # have to invent one. Transcription is checked instead, mechanically,
+        # by verify_rounded.py: 42 values against their generated sources.
+        - {path: phasef_part1_rounded.csv, sha256: ecaabc451eab7410}
+        - {path: phasef_tables.tex, sha256: 15155b079ae94ae9}
+      owner: self
+      provenance_note: "Reconstruction; the original Phase F substrate was lost. Reproduces its published means and MSEs to under 1%."
+      last_verified: 2026-08-16
+    - id: tab2
+      kind: table
+      label: tab:tradeoff
+      status: deposited
+      generator: {path: kac_phasef_v2_1_0.py, language: python, sha256: d311258383bbfbdf, entrypoint: "python3 kac_phasef_v2_1_0.py"}
+      inputs: []
+      params: {seed: 813900000, notes: "60 randomizations, aligned angles, block widths 2..N"}
+      software: ["python 3.12", "numpy 2.4.4"]
+      outputs:
+        - {path: phasef_part2.csv, sha256: 7f8548374ff9e6d1}
+        - {path: phasef_part2_rounded.csv, sha256: 9fdbec9d04a2d291}
+      owner: self
+      provenance_note: ""
+      last_verified: 2026-08-16
+    - id: tab5
+      kind: table
+      label: tab:onestep
+      status: deposited
+      generator: {path: kac_onestep_test_v1_0_0.py, language: python, sha256: 6fcd3df5eb5ca6b9, entrypoint: "python3 kac_onestep_test_v1_0_0.py"}
+      inputs: []
+      params: {seed: 20260817, notes: "N=2048, 4000 states per rule, uniform angles; second seed 77770817 confirms. Criterion pre-registered in session_log.md before the run."}
+      software: ["python 3.12", "numpy 2.4.4"]
+      outputs:
+        - {path: onestep_test.csv, sha256: f3199efa7d3049b6}
+      owner: self
+      provenance_note: "Direct one-step test of Lemma 4.2, added Session 23. NOTE: the id tab5 is a registry key only; inserting this table in Section 6.1 renumbered the rendered tables, so tab:onestep prints as Table 1 and tab:ladder/fix/tradeoff/applied shift to 2/3/4/5. The curve rule is covered separately by kac_onestep_curve_v1_0_0.py on the registered PIC load, since it needs positions."
+      last_verified: 2026-08-16
+    - id: tab3
+      kind: table
+      label: tab:ladder
+      status: deposited
+      generator: {path: kac_remaining_v1_0_0.py, language: python, sha256: 155d30115a6c2c12, entrypoint: "python3 kac_remaining_v1_0_0.py"}
+      inputs:
+        # AUDIT 2026-08-16: this dependency was always real and never declared.
+        - {path: discrepancy_campaign_R4_FULL_results_2026-08-12.zip, sha256: 4ecdc69c19717135}
+      params: {seed: "21 and 22 (two-seed agreement)", notes: "N=2048, 8 replicates per seed, t=40"}
+      software: ["python 3.12", "numpy 2.4.4", "scipy 1.17.1"]
+      outputs:
+        - {path: remaining_results.csv, sha256: ab984b0cbadfa5b4}
+      owner: self
+      provenance_note: "Run through generator_template_v1_0_0; only digits agreeing across two seeds are reported."
+      last_verified: 2026-08-16
+    - id: tab4
+      kind: table
+      label: tab:applied
+      status: deposited
+      generator: {path: kac_remaining_v1_0_0.py, language: python, sha256: 155d30115a6c2c12, entrypoint: "python3 kac_remaining_v1_0_0.py"}
+      inputs:
+        # AUDIT 2026-08-16: F23-1 closed. The recorded hash was the ARCHIVE's,
+        # not the member's. The archive is the real, stageable dependency.
+        - {path: discrepancy_campaign_R4_FULL_results_2026-08-12.zip, sha256: 4ecdc69c19717135}
+      params: {seed: null, notes: "deterministic given the registered t=0 load; Hilbert order 10"}
+      software: ["python 3.12", "numpy 2.4.4", "scipy 1.17.1", "hilbertcurve"]
+      outputs:
+        - {path: remaining_results.csv, sha256: ab984b0cbadfa5b4}
+      owner: self
+      provenance_note: "C/Cbar evaluated on the campaign's own Maxwellian load."
+      last_verified: 2026-08-16
+metadata:
+  schema_version: 1.2
+  last_updated: 2026-08-16
+  last_updated_by: claude-session-23
+  registry_entry_written: false
+  notes: "The fig3 generator gap was closed in Session 23; the registry carries no unhashed items. See the fig3 provenance_note on why re-running that generator gives a byte-different PDF. v1_8_0 applied six MREP corrections and did not change any figure or table output, so no asset hash moved; Table 1 changed one printed digit only, in the .tex, not in remaining_results.csv."

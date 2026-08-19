@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software or the results it produces, please cite the paper."
+title: "Velocity sorting biases the equilibrium in Array-RQMC for binary-collision models"
+abstract: >-
+  Companion code and data for a study of Array-RQMC applied to Kac-type
+  binary-collision models, in which the particles of a system are ordered by
+  their own state and that order chooses which particles collide.
+authors:
+  - family-names: Hyman
+    given-names: James M.
+    affiliation: "Department of Mathematics, Tulane University"
+    email: mhyman@tulane.edu
+    orcid: "https://orcid.org/0000-0001-5247-5794"
+version: v1_32_0
+date-released: "2026-08-16"
+license: MIT
+repository-code: "https://github.com/machyman/hyman2026velocity"
+identifiers:
+  - type: other
+    value: "arXiv: TBD"
+    description: "arXiv identifier, to be assigned"
+keywords:
+  - Array-RQMC
+  - randomized quasi-Monte Carlo
+  - Kac model
+  - binary collisions
+  - equilibrium bias
