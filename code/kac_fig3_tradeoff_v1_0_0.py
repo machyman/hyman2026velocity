@@ -70,13 +70,21 @@ def panel_b(ax, d):
     ratio = d["c_over_cbar"]
     bias = np.abs(d["bias_absv"])
     ax.plot(ratio, bias, "o-", color=PURPLE, lw=1.6, ms=7)
+    # W5 / RAAR-008-01 / HR-C3: w=2 and w=8 sit almost on top of each other
+    # (C/Cbar 2.94 vs 2.93, |bias| 0.721 vs 0.717), so a single fixed offset
+    # put their labels in the same place.  Separate those two explicitly and
+    # leave the rest on the default offset.
+    LABEL_OFFSET = {2: (8, 7), 8: (8, -15)}
     for r, b, w in zip(ratio, bias, d["w"]):
         ax.annotate(f"$w$={int(w)}", (r, b), textcoords="offset points",
-                    xytext=(7, -9), fontsize=7, color=GREY)
+                    xytext=LABEL_OFFSET.get(int(w), (7, -9)),
+                    fontsize=7, color=GREY)
     ax.axvline(1.0, color=GREY, ls=":", lw=1.2)
     ax.annotate("exchangeable value", xy=(1.02, 0.34), xytext=(1.30, 0.30),
                 fontsize=8, color=GREY,
                 arrowprops=dict(arrowstyle="->", color=GREY, lw=0.9))
+    # keep the w=2 / w=8 labels inside the axes at journal scale
+    ax.set_xlim(right=float(np.max(ratio)) + 0.22)
     ax.set_xlabel(r"$C/\overline{C}$   (computable before any trajectory)")
     ax.set_ylabel(r"measured $|$bias $\langle |v| \rangle|$")
     ax.set_title(r"(b) $C/\overline{C}$ predicts the bias a priori", fontsize=9)
