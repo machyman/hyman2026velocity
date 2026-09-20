@@ -48,6 +48,15 @@ NOTEBOOKS = [
     ("kac_remaining_v1_0_0.py", "08", "tables2_5",
      "Table 2, the moment ladder, and Table 5, the applied instance",
      "Tables 2 and 5, Sections 7 and 8", "~30 s", True),
+    ("kac_cascade_monotone_v1_0_0.py", "09", "cascade_monotone",
+     "the monotone energy cascade of the sorted rule, and the odd-j control",
+     "Theorem 9.1", "~1 min", False),
+    ("kac_fig4_condensate_v1_0_0.py", "10", "figure4_condensate",
+     "Figure 4, the condensate and its moment law",
+     "Theorem 9.2, Figure 4", "~2 min", False),
+    ("kac_general_law_v1_0_0.py", "11", "general_law_controls",
+     "the general-scattering-law measurements and the necessity controls",
+     "Theorem 9.2 and the scope remark, Section 9", "~3 min", False),
 ]
 
 BADGE = ("[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]"
